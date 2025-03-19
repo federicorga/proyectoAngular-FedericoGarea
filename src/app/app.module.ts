@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudentsComponent } from './components/students/students.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { CardComponent } from './card/card.component';
 
 
 @NgModule({
@@ -14,13 +15,15 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     NavbarComponent,
     StudentsComponent,
     ToolbarComponent,
+    CardComponent,
 
    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
+    AppRoutingModule,
+
+],
   providers: [],
   bootstrap: [AppComponent]
 })

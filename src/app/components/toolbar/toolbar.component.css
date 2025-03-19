@@ -1,7 +1,67 @@
-div{
-    background-color:cadetblue;
-}
+/* toolbar.component.css */
 
-ul{ 
-    height: 100vh;
+/* Estilo para la toolbar */
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #444;
+    color: white;
+    padding: 15px;
+    height:  100vh;  /* Esto hace que ocupe todo el espacio disponible en el contenedor */
+    position: relative;
+  }
+  
+  /* Título de la toolbar */
+  .toolbar-title {
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para la lista de acciones */
+  .toolbar-actions {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .toolbar-item {
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Efecto de hover en los items de la toolbar */
+  .toolbar-item:hover {
+    background-color: #555;
+  }
+  
+  /* Estilo responsivo para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .toolbar {
+      width: 100%;
+      height: 100%;
     }
+  
+    .toolbar-actions {
+      flex-direction: column;
+    }
+  
+    .toolbar-item {
+      text-align: left;
+      padding: 15px;
+    }
+  }
+
+  .separator {
+    height: 1px;
+    background-color: #ccc; /* Color gris */
+    width: 100%; /* Esto hará que ocupe todo el ancho disponible */
+    margin: 10px 0;
+  }
+  
