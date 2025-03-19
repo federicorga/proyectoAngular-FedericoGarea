@@ -1,0 +1,12 @@
+div{
+    background-color: rgb(163, 64, 255);
+
+}
+
+ul{
+display: flex;
+justify-content: space-evenly;
+text-decoration: none;
+list-style: none;
+
+}

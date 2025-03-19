@@ -1,0 +1,26 @@
+div{
+    margin: 0;
+    padding: 0;
+}
+
+.main-grid-layout{
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 20vw 1fr;
+    grid-template-areas: 
+        "navbar navbar"
+        "toolbar students";
+}
+
+.navbar{
+    grid-area: navbar;
+}
+
+.toolbar{
+    grid-area: toolbar;
+}
+
+.students{
+    grid-area: students;
+}
+
