@@ -6,6 +6,7 @@
       <img *ngIf="alumno.picture" [src]="alumno.picture" class="card-img-top" alt="Card image">
       <div class="card-body">
         <h2 class="card-title">{{ alumno.firstName }} {{ alumno.lastName }}</h2>
+        <h3>Fecha Nac: {{alumno.age|birthYear}}</h3> <!--Pipe de que calcula la fecha de nacimiento con la edad-->
         <h3 >
           Edad: {{ alumno.age }}
         </h3>

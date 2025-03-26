@@ -41,14 +41,14 @@ export class CardStudentComponent {
         firstName: "Lucía",
         lastName: "Rodríguez",
         age: 21,
-        note: 4,
+        note: 10,
         picture: this.imageUrl
     },
     {
         firstName: "Pedro",
         lastName: "Hernández",
         age: 23,
-        note: 10,
+        note: 3,
         picture: this.imageUrl
     }
   ];

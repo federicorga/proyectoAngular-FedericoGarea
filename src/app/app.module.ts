@@ -8,6 +8,7 @@ import { StudentsComponent } from './components/students/students.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { CardStudentComponent } from './cardStudent/cardStudent.component';
 import { DirectivesComponent } from './directives/directives.component';
+import { BirthYearPipe } from './directives/pipes/birth-year.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DirectivesComponent } from './directives/directives.component';
     ToolbarComponent,
     CardStudentComponent,
     DirectivesComponent,
+    BirthYearPipe,
 
    
   ],
