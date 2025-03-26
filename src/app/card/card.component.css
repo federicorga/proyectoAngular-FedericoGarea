@@ -71,3 +71,12 @@
     cursor: pointer;                /* Cursor pointer para indicar que es clickeable */
   }
   
+
+  /*Directivas*/
+  
+  .isMinor{
+    color: gold;
+  }
+  .isOlder{
+    color: green;
+  }

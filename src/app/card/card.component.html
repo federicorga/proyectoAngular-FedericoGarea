@@ -1,8 +1,18 @@
-<div class="card" style="width: 18rem;">
-    <img *ngIf="imageUrl" [src]="imageUrl" class="card-img-top" alt="Card image">
-    <div class="card-body">
-      <h5 class="card-title">{{ title }}</h5>
-      <p class="card-text">{{ description }}</p>
-      <a href="#" class="btn btn-primary">Ver</a>
+
+  <div  *ngFor="let alumno of alumnos;">
+    <div class="card" style="width: 18rem;">
+      <img *ngIf="alumno.picture" [src]="alumno.picture" class="card-img-top" alt="Card image">
+      <div class="card-body">
+        <h2 class="card-title">{{ alumno.firstName }} {{ alumno.lastName }}</h2>
+        <h3 [ngClass]="{
+            isMinor: alumno.age >= 18,
+            isOlder: alumno.age < 18
+        }">
+          Edad: {{ alumno.age }}
+        </h3>
+        <p class="card-text">Nota: {{ alumno.note }}</p>
+        <a href="#" class="btn btn-primary">Ver</a>
+      </div>
     </div>
   </div>
+
