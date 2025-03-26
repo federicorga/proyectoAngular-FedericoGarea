@@ -75,7 +75,7 @@
   /*Directivas*/
   
   .isMinor{
-    color: gold;
+    color: rgb(255, 0, 0);
   }
   .isOlder{
     color: green;

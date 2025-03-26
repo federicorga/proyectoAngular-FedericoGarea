@@ -8,6 +8,7 @@
     margin-bottom: 20px;
     color: #333;
   }
+
   
   /* Contenedor de las tarjetas de estudiantes */
   .students-grid {
@@ -19,6 +20,7 @@
   
   /* Estilos adicionales para las tarjetas si es necesario */
   app-card {
+    display: contents;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;

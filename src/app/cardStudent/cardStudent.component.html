@@ -1,16 +1,18 @@
 
+<!--MOLDE DE COMPONENTE CARD ALUMNO-->
+  
   <div  *ngFor="let alumno of alumnos;">
     <div class="card" style="width: 18rem;">
       <img *ngIf="alumno.picture" [src]="alumno.picture" class="card-img-top" alt="Card image">
       <div class="card-body">
         <h2 class="card-title">{{ alumno.firstName }} {{ alumno.lastName }}</h2>
-        <h3 [ngClass]="{
-            isMinor: alumno.age >= 18,
-            isOlder: alumno.age < 18
-        }">
+        <h3 >
           Edad: {{ alumno.age }}
         </h3>
-        <p class="card-text">Nota: {{ alumno.note }}</p>
+        <p class="card-text" [ngClass]="{
+          isMinor: alumno.note  <= 5,
+          isOlder: alumno.note  >= 6
+      }">Nota: {{ alumno.note }}</p>
         <a href="#" class="btn btn-primary">Ver</a>
       </div>
     </div>

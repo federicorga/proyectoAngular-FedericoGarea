@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StudentsComponent } from './components/students/students.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { CardComponent } from './card/card.component';
+import { CardStudentComponent } from './cardStudent/cardStudent.component';
 import { DirectivesComponent } from './directives/directives.component';
 
 
@@ -16,7 +16,7 @@ import { DirectivesComponent } from './directives/directives.component';
     NavbarComponent,
     StudentsComponent,
     ToolbarComponent,
-    CardComponent,
+    CardStudentComponent,
     DirectivesComponent,
 
    
