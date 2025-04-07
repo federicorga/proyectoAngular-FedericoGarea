@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Alumno } from '../directives/interfaces/Alumno';
+import { Student } from '../../interfaces/Student';
 
 @Component({
   selector: 'app-card',
@@ -15,41 +15,51 @@ export class CardStudentComponent {
 
 
 
-  public alumnos: Alumno[] = [
+  public students1: Student[] = [
     {
+      id:1,
         firstName: "Juan",
         lastName: "Pérez",
         age: 20,
         note: 8.5,
-        picture: this.imageUrl
+        picture: this.imageUrl,
+        isActive: true
     },
     {
+      id:2,
         firstName: "Ana",
         lastName: "Gómez",
         age: 22,
         note: 5,
-        picture: this.imageUrl
+        picture: this.imageUrl,
+        isActive:true
     },
     {
+      id:3,
         firstName: "Carlos",
         lastName: "Martínez",
         age: 19,
         note: 6,
-        picture: this.imageUrl
+        picture: this.imageUrl,
+        isActive:true
     },
     {
+      id:4,
         firstName: "Lucía",
         lastName: "Rodríguez",
         age: 21,
         note: 10,
-        picture: this.imageUrl
+        picture: this.imageUrl,
+        isActive:true
     },
     {
+      id:5,
         firstName: "Pedro",
         lastName: "Hernández",
         age: 23,
         note: 3,
-        picture: this.imageUrl
+        picture: this.imageUrl,
+        isActive:true
     }
   ];
 }

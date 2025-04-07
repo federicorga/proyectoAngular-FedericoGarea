@@ -1,0 +1,32 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Nota</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="align-items-center" *ngFor="let student of students">
+        <th scope="row">{{student.id}}</th>
+       <td  >{{student.firstName}}</td>
+       <td >{{student.lastName}}</td>
+       <td >{{student.age}}</td>
+       <td >{{student.note}}</td>
+       <td class="btn" [ngClass]="{
+        'text-success':student.isActive,
+        'text-danger':!student.isActive
+       }">
+       {{student.isActive?"Activo":"Inactivo"}}</td>
+       <td><button (click)="onDeleteStudent(student.id)" class="btn btn-danger">
+       ELIMINAR
+       </button></td>
+      </tr>
+
+  
+    </tbody>
+  </table>
