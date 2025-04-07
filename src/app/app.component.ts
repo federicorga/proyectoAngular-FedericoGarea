@@ -61,4 +61,13 @@ export class AppComponent {
   onDeleteStudent(id:Number):void{ //Elimina a un estudiante a travez del boton.
    this.students=this.students.filter((student)=>student.id!=id)
   }
+
+  setNoteStudent(event: { id: number, note: number }): void { //Se le pasa un objeto seteado
+    this.students = this.students.map((student) => {
+      if (student.id === event.id) {
+        student.note = event.note;
+      }
+      return student;
+    });
+  }
 }

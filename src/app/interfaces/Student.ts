@@ -3,8 +3,9 @@ export interface Student{
     firstName:string,
     lastName:string,
     age:number,
-    note:number,
-    picture:string,
-    isActive:boolean
+    email?:string,
+    note?:number,
+    picture?:string,
+    isActive?:boolean
 
 }

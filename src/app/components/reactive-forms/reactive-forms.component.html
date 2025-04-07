@@ -1,7 +1,64 @@
-<form [formGroup]="formulario" (ngSubmit)="submit()">
-   Nombre: <input type="text" formControlName="name"><br/>
-   Email: <input type="text" formControlName="email"><br/>
-   Mensaje: <textarea type="text" formControlName="mensaje"></textarea>
 
-   <button type="submit">Enviar</button>
+<form class="p-5" [formGroup]="formulario" (ngSubmit)="submit()">
+   <div class="form-control">
+      <label for="firstName">Nombre:</label>
+      <input type="text" formControlName="firstName" class="form-control" id="name">
+      <div *ngIf="!isNameInvalid">
+         <div *ngIf="firstNameControler?.hasError('required')">
+            <small class="text-danger">El nombre es requerido</small>
+         </div>
+         <div *ngIf="firstNameControler?.hasError('minlength')">
+            <small class="text-danger">EL nombre debe tener al menos 3 caracteres</small>
+         </div>
+      </div>
+   </div>
+   <div class="form-control">
+      <label for="lastName">Apellido:</label>
+      <input type="text" formControlName="lastName" class="form-control" id="name">
+      <div *ngIf="!isNameInvalid">
+         <div *ngIf="lastNameControler?.hasError('required')">
+            <small class="text-danger">El apellido es requerido</small>
+         </div>
+         <div *ngIf="lastNameControler?.hasError('minlength')">
+            <small class="text-danger">EL apellido debe tener al menos 3 caracteres</small>
+         </div>
+      </div>
+   </div>
+   <div class="form-control">
+      <label for="age">Edad:</label>
+      <input type="text" formControlName="age" class="form-control" id="name">
+      <div *ngIf="!isNameInvalid">
+         <div *ngIf="ageControler?.hasError('required')">
+            <small class="text-danger">La edad es requerida</small>
+         </div>
+         <div *ngIf="ageControler?.hasError('minlength')">
+            <small class="text-danger">La edad no puede ser menor de dos digitos</small>
+         </div>
+         <div *ngIf="ageControler?.hasError('maxlength')">
+            <small class="text-danger">La edad no puede ser mas de dos digitos</small>
+         </div>
+         <div *ngIf="ageControler?.hasError('min')">
+            <small class="text-danger">La edad no puede ser menor de 15</small>
+         </div>
+         <div *ngIf="ageControler?.hasError('max')">
+            <small class="text-danger">La edad no puede ser mayor a 80</small>
+         </div>
+      </div>
+   </div>
+   <div class="form-control">
+      <label for="email">Email:</label>
+      <input type="text" formControlName="email" class="form-control" id="email">
+      <div *ngIf="!isEmailInvalid">
+         <div *ngIf="emailControler?.hasError('required')">
+            <small class="text-danger">El email es requerido</small>
+         </div>
+         <div *ngIf="emailControler?.hasError('email')">
+            <small class="text-danger">El formato del email es incorrecto!</small>
+         </div>
+      </div>
+   </div>
+
+   <button type="submit"  class="btn btn-primary mt-2">Enviar</button>
+   
+   
 </form>

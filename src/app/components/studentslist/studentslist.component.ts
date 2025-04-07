@@ -17,4 +17,14 @@ public selectedStudent:EventEmitter<Number>=new EventEmitter(); //Enviar un even
 onDeleteStudent(id:number):void{ //lo envio al padre
 this.selectedStudent.emit(id);
 }
+
+@Output()
+public setNota: EventEmitter<{ id: number, note: number }> = new EventEmitter(); // para actualizar nota
+setNoteStudent(id: number, note: number): void {
+  this.setNota.emit({ id, note });
+}
+
+
+
+
 }

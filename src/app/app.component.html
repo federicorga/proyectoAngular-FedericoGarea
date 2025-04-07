@@ -8,7 +8,13 @@
 </div>
 
 <div class="container d-flex flex-column justify-content-center">
+  <h3>Agregar nuevo Alumno</h3>
     <app-reactive-forms></app-reactive-forms>
     <h3>Lista de Alumnos</h3>
-    <app-students-list (selectedStudent)="onDeleteStudent($event)" [students]="students"></app-students-list>
+    <app-students-list 
+    (selectedStudent)="onDeleteStudent($event)" 
+    (setNota)="setNoteStudent($event)" 
+    [students]="students">
+  </app-students-list>
 </div>
+

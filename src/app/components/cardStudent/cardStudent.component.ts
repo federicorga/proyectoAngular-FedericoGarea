@@ -8,10 +8,12 @@ import { Student } from '../../interfaces/Student';
   styleUrl: './cardStudent.component.css'
 })
 export class CardStudentComponent {
+  
   title: string = 'Titulo'; // Título estático
   description: string = ' Lorem ipsum dolor sit amet, consectetur adipiscing elit.'; // Descripción estática
   imageUrl: string = 'https://www.w3schools.com/bootstrap4/img_avatar1.png'; // URL de imagen estática
   age:number=15;
+  note:number=0;
 
 
 

@@ -25,6 +25,20 @@
        <td><button (click)="onDeleteStudent(student.id)" class="btn btn-danger">
        ELIMINAR
        </button></td>
+       <td>
+        <input
+        type="number"
+        [(ngModel)]="student.note"
+        class="form-control d-inline-block w-50"
+        placeholder="Nueva nota"
+      />
+      <button
+        class="btn btn-primary mt-1"
+        (click)="setNoteStudent(student.id, student.note!)"
+      >
+        Cambiar
+      </button>
+      </td>
       </tr>
 
   
