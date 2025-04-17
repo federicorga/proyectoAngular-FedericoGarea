@@ -1,0 +1,15 @@
+<mat-toolbar class="navbar" color="primary">
+    <!-- Menú hamburguesa -->
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <!-- Título centrado -->
+     <div class="title-container-navbar">
+      <img src="/img/coderverse-logo.png" width="50px" alt=""><span class="title"> CODERVERSE</span>
+  </div>
+    
+    <!-- Botón de salir -->
+    <button mat-button (click)="logout()">Salir</button>
+  </mat-toolbar>
+  

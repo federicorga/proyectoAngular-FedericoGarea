@@ -1,20 +1,2 @@
 
-<div class="main-grid-layout">
-
-<app-navbar class="navbar"></app-navbar>
-<app-toolbar class="toolbar"></app-toolbar>
-<app-students class="students"></app-students>
-
-</div>
-
-<div class="container d-flex flex-column justify-content-center">
-  <h3>Agregar nuevo Alumno</h3>
-    <app-reactive-forms></app-reactive-forms>
-    <h3>Lista de Alumnos</h3>
-    <app-students-list 
-    (selectedStudent)="onDeleteStudent($event)" 
-    (setNota)="setNoteStudent($event)" 
-    [students]="students">
-  </app-students-list>
-</div>
-
+<app-sidebar></app-sidebar>
