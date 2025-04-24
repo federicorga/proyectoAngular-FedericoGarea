@@ -23,7 +23,7 @@ export class FormStudentComponent {
       
       email: [,[Validators.email, Validators.required]],
       note: [0, [Validators.maxLength(2)]], //nota 0 igual a sin nota asignada
-      isActive: [false, [Validators.required]], //inicia inactivo
+      isActive: ["inactivo", [Validators.required]], //inicia inactivo
       picture: ['https://www.w3schools.com/bootstrap4/img_avatar1.png'],
       course: ['', [Validators.required]],
     });
@@ -53,7 +53,7 @@ export class FormStudentComponent {
       lastName: '',
       email: '',
       note: 0,
-      isActive: false,
+      isActive: "Inactivo",
       picture: 'https://www.w3schools.com/bootstrap4/img_avatar1.png',
       course: ''
     });

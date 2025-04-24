@@ -43,7 +43,7 @@ emitEditar(student: Student): void {
 
   @Input() public students: Student[] = [];
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'email', 'note', 'course', 'isActive','actions'];
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'note', 'course', 'isActive','actions'];
   dataSource = new MatTableDataSource<Student>();
 
   ngOnChanges(changes: SimpleChanges): void { // Detecta cambios en las propiedades de Input

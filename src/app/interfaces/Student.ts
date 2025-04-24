@@ -6,6 +6,6 @@ export interface Student{
     note:number,
     picture:string,
     course:"Angular"|"React"|"Vue",
-    isActive:boolean
+    isActive:"Activo"|"Inactivo",
 
 }

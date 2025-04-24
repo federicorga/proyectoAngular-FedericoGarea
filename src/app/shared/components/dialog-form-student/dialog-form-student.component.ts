@@ -22,7 +22,7 @@ export class DialogFormStudentComponent {
       lastName: ['', [Validators.minLength(3), Validators.required]],
       email: ['', [Validators.email, Validators.required]],
       note: [0, [Validators.maxLength(2)]],
-      isActive: [false, [Validators.required]],
+      isActive: ["Inactivo", [Validators.required]],
       picture: ['https://www.w3schools.com/bootstrap4/img_avatar1.png'],
       course: ['', [Validators.required]],
     });

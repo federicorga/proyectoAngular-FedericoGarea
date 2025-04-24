@@ -22,6 +22,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { EditStudentDialogComponent } from './components/edit-student-dialog/edit-student-dialog.component';
 import { DialogFormStudentComponent } from './components/dialog-form-student/dialog-form-student.component';
+import { FullNamePipe } from '../pipes/full-name.pipe';
+import { TitleSizeDirective } from './directives/title-size.directive';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import { DialogFormStudentComponent } from './components/dialog-form-student/dia
     NavBarComponent,
     ConfirmDialogComponent,
     EditStudentDialogComponent,
+FullNamePipe,
+TitleSizeDirective
   ],
   imports: [
     CommonModule,
