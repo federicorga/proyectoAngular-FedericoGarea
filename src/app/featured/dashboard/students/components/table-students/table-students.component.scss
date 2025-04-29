@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+      
+
+    
+      
+  }
+
+
+  .mat-hader-actions{
+    text-align: center;
+  }
+
+  .mat-cell-actions{
+    text-align: center;
+  }
+
+  .content-button-delete-table{
+    display: flex;
+    align-items: center;
+  }
+
+  .trash-icon-table{
+    align-items: center;
+    filter: invert(17%) sepia(99%) saturate(7485%) hue-rotate(356deg) brightness(96%) contrast(121%);
+    width: 1.5rem;
+  }
