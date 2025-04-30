@@ -50,7 +50,10 @@ export class StudentsService {
   }
 
   addStudentObs(student: Student) {
-    this._students = [...this._students, student];
+    const newId = this.generateId(this._students);
+    const newStudent = { ...student, id: newId };
+  
+    this._students = [...this._students, newStudent];
     this.dataSubject.next(this._students);
   }
 
@@ -58,16 +61,17 @@ export class StudentsService {
     this._students = this._students.map(s =>
       s.id === student.id ? { ...s, ...student } : s
     );
-    this.dataSubject.next(this._students); // actualiza el observable
+    this.dataSubject.next(this._students);
   }
 
   deleteStudent(id: number): void {
     this._students = this._students.filter(s => s.id !== id);
-    this.dataSubject.next(this._students); // actualiza el observable
+    this.dataSubject.next(this._students); 
   }
 
   generateId(array: any[]): number {
-    return array.length + 1; // Retorna el próximo id basado en el tamaño del array
+    if (array.length === 0) return 1;
+    return Math.max(...array.map(item => item.id)) + 1;
   }
   
 

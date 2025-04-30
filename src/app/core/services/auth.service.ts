@@ -14,11 +14,15 @@ export class AuthService {
 
   private users = [
     {
+      firstName:'Federico',
+      lastName:'Garea',
       email: 'fg@gmail.com',
       password: '1234',
       role: 'admin',
     },
     {
+      firstName:'Emiliano',
+      lastName:'Tatadio',
       email: 'emi@gmail.com',
       password: '1234',
       role: 'admin',
@@ -57,6 +61,12 @@ export class AuthService {
 
   getRole() {
     return this.authUser$;
+  }
+
+  // Método para obtener el usuario completo
+  getUser(): User | null {
+    return this._authUser.getValue();  // Devuelve el usuario actual logueado
+    
   }
 
   // Método para obtener el nombre del usuario

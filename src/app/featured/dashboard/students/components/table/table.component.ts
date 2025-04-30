@@ -4,6 +4,7 @@ import { StudentsService } from '../../../../../core/services/students.service';
 
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.studentsService.getStudentsObs();
     this.studentsService.students$.subscribe((data) => {
-      console.log(data);
+  
       this.dataSource = data;
     });
 
@@ -41,7 +42,16 @@ export class TableComponent implements OnInit {
   
   // ✅ Eliminar estudiante por ID
   deleteStudent(id: number): void {
-    this.studentsService.deleteStudent(id);
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: { message: '¿Estás seguro de que deseas eliminar este estudiante?' },
+    });
+  
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.studentsService.deleteStudent(id);
+      }
+    });
   }
 
   editStudent(student: Student): void {

@@ -20,13 +20,13 @@ export class DetailsComponent {
     private activatedRoute: ActivatedRoute
   ) {
     const title = this.activatedRoute.snapshot.paramMap.get('title');
-    console.log(title);
+ 
 
     this.courseService.getByTitle(title!).subscribe({
       next: (course) => {
         this.isLoading = false;
         this.course = course;
-        console.log(course);
+    
       },
       error: (error) => {
         this.isLoading = false;

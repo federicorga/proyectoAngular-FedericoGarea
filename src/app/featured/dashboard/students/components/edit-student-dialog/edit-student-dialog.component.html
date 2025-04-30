@@ -5,14 +5,25 @@
 
 
   <mat-form-field appearance="fill" class="full-width">
-    <mat-label>Curso</mat-label>
+    <mat-label>Course</mat-label>
     <mat-select [(ngModel)]="studentData.course">
-      <mat-option value="Angular">Angular</mat-option>
-      <mat-option value="React">React</mat-option>
-      <mat-option value="Vue">Vue</mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-option
+      *ngFor="let course of courseNames"
+      [value]="course.toLowerCase()"
+      >{{ course }}</mat-option
+    >
+  </mat-select>
 
+
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="full-width">
+  <mat-label>State</mat-label>
+  <mat-select [(ngModel)]="studentData.isActive">
+    <mat-option [value]="true">Active</mat-option>
+    <mat-option [value]="false">Inactive</mat-option>
+  </mat-select>
+
+</mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

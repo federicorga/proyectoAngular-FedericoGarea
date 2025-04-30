@@ -49,7 +49,7 @@ export class CourseService {
     this.coursesTitlesSubject.next(this._courses.map((course) => course.title));
   }
 
-  getByTitle(title: string) {
+  getByTitle(title: string) { 
     return new Observable<Course>((subscriber) => {
       const course = this._courses.find(
         (course) => course.title.toLowerCase() === title.toLowerCase()
@@ -61,5 +61,23 @@ export class CourseService {
         subscriber.error('Course not found');
       }
     });
-  }
+  };
+
+  editCourse(updatedCourse: Course): void {
+    this._courses = this._courses.map(course =>
+      course.title.toLowerCase() === updatedCourse.title.toLowerCase()
+        ? { ...course, ...updatedCourse }
+        : course
+    );
+    this.coursesSubject.next(this._courses);
+    this.coursesTitlesSubject.next(this._courses.map(c => c.title));
+  };
+
+  deleteCourse(title: string): void {
+    this._courses = this._courses.filter(
+      course => course.title.toLowerCase() !== title.toLowerCase()
+    );
+    this.coursesSubject.next(this._courses);
+    this.coursesTitlesSubject.next(this._courses.map(c => c.title));
+  };
 }
