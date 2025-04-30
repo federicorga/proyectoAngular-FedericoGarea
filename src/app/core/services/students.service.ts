@@ -12,16 +12,20 @@ export class StudentsService {
 
   private _students: Student[] = [
     {
+      id:0,
       firstName: 'John',
       lastName: 'Doe',
       email: 'john@gmail.com',
-      course: 'angular',
+      course: 'Angular',
+      isActive:false
     },
     {
+      id:1,
       firstName: 'Jane',
       lastName: 'Smith',
       email: 'jane@gmail.com',
-      course: 'react',
+      course: 'React',
+      isActive:true
     },
   ];
 
@@ -49,6 +53,24 @@ export class StudentsService {
     this._students = [...this._students, student];
     this.dataSubject.next(this._students);
   }
+
+  editStudent(student: Student): void {
+    this._students = this._students.map(s =>
+      s.id === student.id ? { ...s, ...student } : s
+    );
+    this.dataSubject.next(this._students); // actualiza el observable
+  }
+
+  deleteStudent(id: number): void {
+    this._students = this._students.filter(s => s.id !== id);
+    this.dataSubject.next(this._students); // actualiza el observable
+  }
+
+  generateId(array: any[]): number {
+    return array.length + 1; // Retorna el próximo id basado en el tamaño del array
+  }
+  
+
 
   constructor() {}
 }

@@ -2,12 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "pnpm",
-    "analytics": false
+    "packageManager": "pnpm"
   },
   "newProjectRoot": "projects",
   "projects": {
-    "proyectoFinalAngular-FedericoGarea": {
+    "projecto-final": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -28,7 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/proyecto-final-angular-federico-garea",
+            "outputPath": "dist/projecto-final",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -76,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "proyectoFinalAngular-FedericoGarea:build:production"
+              "buildTarget": "projecto-final:build:production"
             },
             "development": {
-              "buildTarget": "proyectoFinalAngular-FedericoGarea:build:development"
+              "buildTarget": "projecto-final:build:development"
             }
           },
           "defaultConfiguration": "development"

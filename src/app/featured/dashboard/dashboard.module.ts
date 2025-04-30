@@ -6,17 +6,20 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
-
+import { CoursesModule } from './courses/courses.module';
 import { StudentsModule } from './students/students.module';
+
 
 @NgModule({
   declarations: [DashboardComponent],
   imports: [
     CommonModule,
     SharedModule,
+    CoursesModule,
     StudentsModule,
     RouterModule,
     DashboardRoutingModule,
+   
   ],
   exports: [DashboardComponent],
 })

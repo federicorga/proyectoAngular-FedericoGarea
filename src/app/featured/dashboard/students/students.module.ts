@@ -1,47 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatDialogModule, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { SharedModule } from '../../../shared/shared.module';
 import { APP_CONFIG } from '../../../core/injection-token';
 import { config } from 'rxjs';
-
 import { StudentsComponent } from './students.component';
-import { TableStudentsComponent } from './components/table-students/table-students.component';
-import { FormStudentComponent } from './components/formStudent/formStudent.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { MatTableModule } from '@angular/material/table';
+import { FormComponent } from './components/form/form.component';
+import { TableComponent } from './components/table/table.component';
 import { FullNamePipe } from '../../../pipes/full-name.pipe';
-import { ContentFormListStudentsComponent } from './components/content-form-ilist-sutdents/content-form-ilist-sutdents.component';
+import { EditStudentDialogComponent } from './components/edit-student-dialog/edit-student-dialog.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [
-    FormStudentComponent,
-    TableStudentsComponent,
-    StudentsComponent,
-    ConfirmDialogComponent,
-    FullNamePipe,
-ContentFormListStudentsComponent
- 
-
-    
-  ],
-  imports: [
-    CommonModule,
-    SharedModule,
-
-    MatTableModule,
-
-  ],
-  exports: [
-    StudentsComponent,
-   ContentFormListStudentsComponent
-  ],
+  declarations: [FormComponent, TableComponent, StudentsComponent,FullNamePipe,EditStudentDialogComponent,ConfirmDialogComponent],
+  imports: [CommonModule, SharedModule, MatDialogModule,FormsModule],
+  exports: [StudentsComponent],
   providers: [
+
     {
       provide: 'TITLE',
       useValue: 'Student Management',

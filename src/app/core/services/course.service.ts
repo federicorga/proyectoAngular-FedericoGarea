@@ -34,7 +34,7 @@ export class CourseService {
     },
   ];
 
-  getCourses(): void {
+  getCourses(): void { 
     this.coursesSubject.next(this._courses);
   }
 

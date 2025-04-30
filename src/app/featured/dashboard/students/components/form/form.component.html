@@ -1,0 +1,49 @@
+<form [formGroup]="formGroup" (ngSubmit)="submit()">
+  <div>
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" />
+      <mat-error *ngIf="formGroup.get('firstName')?.hasError('required')">
+        El nombre es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('firstName')?.hasError('minlength')">
+        El nombre debe tener al menos 3 caracteres.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" />
+      <mat-error *ngIf="formGroup.get('lastName')?.hasError('required')">
+        El apellido es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('lastName')?.hasError('minlength')">
+        El apellido debe tener al menos 3 caracteres.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+      <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
+        El email es obligatorio.
+      </mat-error>
+      <mat-error *ngIf="formGroup.get('email')?.hasError('email')">
+        El formato del email no es válido.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="course">
+        <mat-option
+          *ngFor="let course of courseNames"
+          [value]="course.toLowerCase()"
+          >{{ course }}</mat-option
+        >
+      </mat-select>
+      <mat-error *ngIf="formGroup.get('course')?.hasError('required')">
+        El curso es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button type="submit">Add Student</button>
+  </div>
+</form>

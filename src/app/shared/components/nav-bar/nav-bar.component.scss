@@ -1,5 +1,5 @@
 .navbar {
-  position: fixed; 
+ 
   top: 0; 
   left: 0; 
   width: 100%; 
@@ -34,5 +34,12 @@
   }
 
 
+  .conent-userifo-navbar{
+    display: flex;
+        justify-content: flex-end;
+        h3{
+          margin-right: 10px;
+        }
+  }
  
   

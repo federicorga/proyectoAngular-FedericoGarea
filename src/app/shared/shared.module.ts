@@ -1,56 +1,58 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Angular Material
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatButtonModule } from '@angular/material/button';
-import { MatListModule } from '@angular/material/list';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
+import { MatListModule } from '@angular/material/list';
+import { DialogComponent } from './components/dialog/dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-// Components
+import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-
-
-
-// Directives
-import { TitleSizeDirective } from './directives/title-size.directive';
-
+import { MatToolbar } from '@angular/material/toolbar';
 
 @NgModule({
-  declarations: [
-    SidebarComponent,  
-    NavBarComponent,
-    TitleSizeDirective,
-
-  ],
+  declarations: [NavBarComponent, DialogComponent],
   imports: [
     CommonModule,
-    MatToolbarModule,
-    MatIconModule,
     MatSidenavModule,
     MatButtonModule,
-    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
     MatTableModule,
+    MatListModule,
     MatDialogModule,
-   
-],
-  exports: [ 
-    SidebarComponent,
-    NavBarComponent,
-    TitleSizeDirective,
+    MatCardModule,
+    RouterModule,
+    MatToolbar
 
-    
-
-    MatToolbarModule,
-    MatIconModule,
+  ],
+  exports: [
     MatSidenavModule,
     MatButtonModule,
-    MatListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    ReactiveFormsModule,
     MatTableModule,
-MatDialogModule,
-  ]
+    NavBarComponent,
+    MatListModule,
+    MatCardModule,
+    RouterModule,
+  ],
 })
 export class SharedModule {}

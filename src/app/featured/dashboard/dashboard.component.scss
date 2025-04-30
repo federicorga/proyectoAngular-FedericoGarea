@@ -11,5 +11,20 @@
 }
 
 .sidenav {
+  background-color: lavender;
   padding: 20px;
+
+  a{
+    cursor: pointer;
+    width: 10rem;
+  }
+  button{
+    cursor: pointer;
+    width: 10rem;
+    margin-top: 10px;
+  }
 }
+
+
+
+

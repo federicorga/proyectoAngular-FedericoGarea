@@ -1,0 +1,52 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element"> {{ element.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef> Nombre Completo </th>
+          <td mat-cell *matCellDef="let element"> {{ element | fullName }} </td>
+        </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="course">
+    <th mat-header-cell *matHeaderCellDef>Course</th>
+    <td mat-cell *matCellDef="let element">
+      <a mat-flat-button [routerLink]="['../courses', element.course]">
+        {{ element.course }}
+      </a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isActive">
+    <th mat-header-cell *matHeaderCellDef> Activo</th>
+    <td mat-cell *matCellDef="let element"> {{element.isActive}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef class="mat-hader-actions"> Acciones </th>
+    <td mat-cell *matCellDef="let element" class="mat-cell-actions ">
+      <button mat-button (click)="deleteStudent(element.id)">
+        <img class="trash-icon-table" src="/img/tacho-de-basura.png" width="30px" alt="">
+      </button>
+    
+      
+      <button mat-button (click)="editStudent(element)">
+        <img src="/img/avatar-de-usuario.png" width="30px" alt="">
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
