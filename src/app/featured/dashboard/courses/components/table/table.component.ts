@@ -29,13 +29,19 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.courseService.getCourses();
-    this.courseService.courses$.subscribe((data) => {
-
-      this.dataSource = data;
+    this.courseService.courses$.subscribe({
+      next: (data) => {
+        console.log(data);
+        this.dataSource = data;
+      },
+      error: (error) => {
+        console.error('Error fetching courses:', error);
+      },
     });
   }
 
-  onDelete(title: string): void {
+
+  deleteCourse(id: string,title:string): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
       data: { message: `¿Estás seguro de que querés eliminar el curso "${title}"?` }
@@ -43,17 +49,31 @@ export class TableComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
-        this.courseService.deleteCourse(title);
+        this.courseService.deleteCourse(id);
       }
     });
-  }
-  onEdit(course: Course): void {
+  };
+  
+  editCourse(id:string, course: Course): void {
     // Abrí un diálogo para editar (como hacés con estudiantes), o por ahora, hacé algo simple
     const updatedDescription = prompt('Nueva descripción:', course.description);
     if (updatedDescription !== null) {
-      this.courseService.editCourse({ ...course, description: updatedDescription });
+      this.courseService.updateCourse({ ...course, description: updatedDescription });
+      this.courseService.setUpdateCourse(id);
     }
   }
 
   
+
+
+  
 }
+
+
+
+
+
+
+
+
+
