@@ -1,11 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Student } from '../../interfaces/Student';
 import { StudentsService } from '../../../../../core/services/students.service';
-
-import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-
 
 @Component({
   selector: 'student-table',
@@ -14,39 +12,36 @@ import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.compone
   styleUrl: './table.component.scss',
 })
 export class TableComponent implements OnInit {
-  displayedColumns: string[] = ['id','fullName', 'email', 'course','isActive','actions'];
+  displayedColumns: string[] = ['id', 'fullName', 'email', 'course', 'isActive', 'actions'];
   dataSource: Student[] = [];
-  
+  errorMessage: string | null = null; // Variable para almacenar errores
 
   constructor(
     private studentsService: StudentsService,
     @Inject('TITLE') private title: string,
-    private dialog: MatDialog // Aquí inyectamos MatDialog
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.studentsService.getStudentsObs();
-    this.studentsService.students$.subscribe((data) => {
-  
-      this.dataSource = data;
+    this.studentsService.students$.subscribe({
+      next: (data) => {
+        this.dataSource = data;
+      },
+      error: (error) => {
+        this.errorMessage = 'Error al cargar los estudiantes. Por favor, intente nuevamente.';
+        console.error('Error fetching students:', error);
+      },
     });
 
-    this.studentsService
-      .getStudentsPromise()
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((error) => console.log(error));
+    this.studentsService.fetchStudentsFromApi();
   }
 
-  
-  // ✅ Eliminar estudiante por ID
-  deleteStudent(id: number): void {
+  deleteStudent(id: number | string): void {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '300px',
       data: { message: '¿Estás seguro de que deseas eliminar este estudiante?' },
     });
-  
+
     dialogRef.afterClosed().subscribe((confirmed: boolean) => {
       if (confirmed) {
         this.studentsService.deleteStudent(id);
@@ -57,7 +52,7 @@ export class TableComponent implements OnInit {
   editStudent(student: Student): void {
     const dialogRef = this.dialog.open(EditStudentDialogComponent, {
       width: '400px',
-      data: student
+      data: student,
     });
 
     dialogRef.afterClosed().subscribe((result: Partial<Student>) => {
@@ -67,7 +62,4 @@ export class TableComponent implements OnInit {
       }
     });
   }
-
-  
-  
 }

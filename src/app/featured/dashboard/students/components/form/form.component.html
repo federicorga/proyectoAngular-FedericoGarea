@@ -1,5 +1,6 @@
 <form [formGroup]="formGroup" (ngSubmit)="submit()">
   <div>
+    <!-- Primer nombre -->
     <mat-form-field>
       <mat-label>First name</mat-label>
       <input matInput formControlName="firstName" />
@@ -10,6 +11,8 @@
         El nombre debe tener al menos 3 caracteres.
       </mat-error>
     </mat-form-field>
+
+    <!-- Apellido -->
     <mat-form-field>
       <mat-label>Last name</mat-label>
       <input matInput formControlName="lastName" />
@@ -20,6 +23,8 @@
         El apellido debe tener al menos 3 caracteres.
       </mat-error>
     </mat-form-field>
+
+    <!-- Email -->
     <mat-form-field>
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" />
@@ -30,20 +35,22 @@
         El formato del email no es válido.
       </mat-error>
     </mat-form-field>
+
+    <!-- Curso -->
     <mat-form-field>
       <mat-label>Course</mat-label>
       <mat-select formControlName="course">
-        <mat-option
-          *ngFor="let course of courseNames"
-          [value]="course.toLowerCase()"
-          >{{ course }}</mat-option
-        >
+        <!-- Correcta declaración de <mat-option> -->
+        <mat-option *ngFor="let course of courseNames" [value]="course">
+          {{ course }}
+        </mat-option>
       </mat-select>
       <mat-error *ngIf="formGroup.get('course')?.hasError('required')">
         El curso es obligatorio.
       </mat-error>
     </mat-form-field>
 
-    <button mat-flat-button type="submit">Add Student</button>
+    <!-- Botón para enviar -->
+    <button mat-flat-button type="submit" [disabled]="formGroup.invalid">Add Student</button>
   </div>
 </form>

@@ -27,3 +27,8 @@ withFetch,
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+
+
+//json-server ./db.json
+
+// si no se instala global npx json-server ./db.json

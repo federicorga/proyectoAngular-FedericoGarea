@@ -54,19 +54,13 @@ export class TableComponent implements OnInit {
     });
   };
   
-  editCourse(id:string, course: Course): void {
-    // Abrí un diálogo para editar (como hacés con estudiantes), o por ahora, hacé algo simple
+  editCourse(course: Course): void {
     const updatedDescription = prompt('Nueva descripción:', course.description);
     if (updatedDescription !== null) {
+      // Actualiza el curso con la nueva descripción
       this.courseService.updateCourse({ ...course, description: updatedDescription });
-      this.courseService.setUpdateCourse(id);
     }
   }
-
-  
-
-
-  
 }
 
 

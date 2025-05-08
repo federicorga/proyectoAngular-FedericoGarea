@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { BehaviorSubject } from 'rxjs';
 import { Student } from '../../featured/dashboard/students/interfaces/Student';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -10,71 +11,65 @@ export class StudentsService {
   private dataSubject = new BehaviorSubject<Student[]>([]);
   students$ = this.dataSubject.asObservable();
 
-  private _students: Student[] = [
-    {
-      id:0,
-      firstName: 'John',
-      lastName: 'Doe',
-      email: 'john@gmail.com',
-      course: 'Angular',
-      isActive:false
-    },
-    {
-      id:1,
-      firstName: 'Jane',
-      lastName: 'Smith',
-      email: 'jane@gmail.com',
-      course: 'React',
-      isActive:true
-    },
-  ];
+  private apiUrl = `${environment.apiUrl}/students`; // URL del endpoint
 
-  getStudents(): Student[] {
-    return this._students;
-  }
+  constructor(private http: HttpClient) {}
 
-  getStudentsPromise(): Promise<Student[]> {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this._students);
-      }, 2000);
+  // GET desde API
+  fetchStudentsFromApi(): void {
+    this.http.get<Student[]>(this.apiUrl).subscribe({
+      next: (students) => {
+        this.dataSubject.next(students);
+      },
+      error: (error) => {
+        console.error('Error fetching students:', error);
+      },
     });
   }
 
-  getStudentsObs() {
-    this.dataSubject.next(this._students);
-  }
-
+  // POST
   addStudent(student: Student): void {
-    this._students.push(student);
+    this.http.post<Student>(this.apiUrl, student).subscribe({
+      next: (newStudent) => {
+        this.fetchStudentsFromApi(); // Refrescamos la lista
+      },
+      error: (error) => {
+        console.error('Error adding student:', error);
+      },
+    });
   }
 
-  addStudentObs(student: Student) {
-    const newId = this.generateId(this._students);
-    const newStudent = { ...student, id: newId };
-  
-    this._students = [...this._students, newStudent];
-    this.dataSubject.next(this._students);
-  }
-
+  // PUT
   editStudent(student: Student): void {
-    this._students = this._students.map(s =>
-      s.id === student.id ? { ...s, ...student } : s
-    );
-    this.dataSubject.next(this._students);
+    this.http.put(`${this.apiUrl}/${student.id}`, student).subscribe({
+      next: () => {
+        this.fetchStudentsFromApi(); // Refrescamos la lista
+      },
+      error: (error) => {
+        console.error('Error updating student:', error);
+      },
+    });
   }
 
-  deleteStudent(id: number): void {
-    this._students = this._students.filter(s => s.id !== id);
-    this.dataSubject.next(this._students); 
+  // DELETE
+  deleteStudent(id: number | string): void {
+    this.http.delete(`${this.apiUrl}/${id}`).subscribe({
+      next: () => {
+        this.fetchStudentsFromApi(); // Refrescamos la lista
+      },
+      error: (error) => {
+        console.error('Error deleting student:', error);
+      },
+    });
   }
 
-  generateId(array: any[]): number {
-    if (array.length === 0) return 1;
-    return Math.max(...array.map(item => item.id)) + 1;
+  // Utilidad para obtener estudiantes una sola vez (Promise)
+  getStudentsPromise(): Promise<Student[]> {
+    return new Promise((resolve, reject) => {
+      this.http.get<Student[]>(this.apiUrl).subscribe({
+        next: (students) => resolve(students),
+        error: (error) => reject(error),
+      });
+    });
   }
-  
-
-
-  constructor() {}
 }
