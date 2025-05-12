@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-
 import { User } from '../../featured/auth/interfaces/User';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment.development'; // O ajusta la ruta
 
 @Injectable({
   providedIn: 'root',
@@ -11,73 +12,53 @@ export class AuthService {
   authUser$ = this._authUser.asObservable();
 
   private TOKEN = 'my_secret_token';
+  private apiUrl = `${environment.apiUrl}/users`; // <- importante
 
-  private users = [
-    {
-      firstName:'Federico',
-      lastName:'Garea',
-      email: 'fg@gmail.com',
-      password: '1234',
-      role: 'admin',
-    },
-    {
-      firstName:'Emiliano',
-      lastName:'Tatadio',
-      email: 'emi@gmail.com',
-      password: '1234',
-      role: 'admin',
-    },
-    {
-      email: 'sofi@gmail.com',
-      password: '1234',
-      role: 'admin',
-    },
-    {
-      email: 'pepe@gmail.com',
-      password: '1234',
-      role: 'user',
-    },
-  ];
+  constructor(private http: HttpClient) {}
 
-  constructor() {}
+  login(email: string, password: string): Observable<boolean> {
+    return new Observable((observer) => {
+      this.http.get<User[]>(this.apiUrl).subscribe({
+        next: (users) => {
+          const user = users.find(
+            (u) => u.email === email && u.password === password
+          );
 
-  login(email: string, password: string): boolean {
-    // Chequear que los datos sean correctos
-    const user = this.users.find(
-      (user) => user.email === email && user.password === password
-    );
+          if (!user) {
+            observer.next(false);
+            observer.complete();
+            return;
+          }
 
-    if (!user) {
-      return false;
-    }
-
-    this._authUser.next(user);
-
-    localStorage.setItem('token', this.TOKEN);
-    // localStorage.setItem('user', JSON.stringify(user));
-
-    return true;
+          this._authUser.next(user);
+          localStorage.setItem('token', this.TOKEN);
+          observer.next(true);
+          observer.complete();
+        },
+        error: (err) => {
+          console.error('Error fetching users:', err);
+          observer.next(false);
+          observer.complete();
+        },
+      });
+    });
   }
 
   getRole() {
     return this.authUser$;
   }
 
-  // Método para obtener el usuario completo
   getUser(): User | null {
-    return this._authUser.getValue();  // Devuelve el usuario actual logueado
-    
+    return this._authUser.getValue();
   }
 
-  // Método para obtener el nombre del usuario
   getUserName(): string {
     const user = this._authUser.getValue();
-    return user ? user.email : '';  // Retorna el nombre del usuario, o un string vacío si no está logueado
+    return user ? user.email : '';
   }
 
   verifyToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-
     return of(token === this.TOKEN);
   }
 

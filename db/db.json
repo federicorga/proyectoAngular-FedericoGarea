@@ -7,6 +7,12 @@
       "role": "admin"
     },
     {
+      "id": "1e7b9c2e-3f4a-4b8a-9c3d-1a2b322326f",
+      "email": "prueba@gmail.com",
+      "password": "1234",
+      "role": "admin"
+    },
+    {
       "id": "2f8c0d3f-4e5b-6a7c-8d9e-0f1a2b3c4d5e",
       "email": "sofi@gmail.com",
       "password": "1234",

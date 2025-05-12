@@ -26,15 +26,15 @@ export class LoginComponent {
   submit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-
-      const isLoggedIn = this.authService.login(email, password);
-
-      if (!isLoggedIn) {
-        alert('Email o contraseña incorrectos');
-        return;
-      }
-
-      this.router.navigate(['/dashboard']);
+  
+      this.authService.login(email, password).subscribe((isLoggedIn) => {
+        if (!isLoggedIn) {
+          alert('Email o contraseña incorrectos');
+          return;
+        }
+  
+        this.router.navigate(['/dashboard']);
+      });
     }
   }
 }
