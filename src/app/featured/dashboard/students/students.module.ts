@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 
 
 
+
+
+
 @NgModule({
   declarations: [FormComponent, TableComponent, StudentsComponent,FullNamePipe,EditStudentDialogComponent,ConfirmDialogComponent],
   imports: [CommonModule, SharedModule, MatDialogModule,FormsModule],

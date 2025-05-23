@@ -5,7 +5,7 @@ import { StudentsComponent } from './students/students.component';
 import { CoursesComponent } from './courses/courses.component';
 import { DetailsComponent } from './courses/pages/details/details.component';
 
-import { adminGuard } from '../../core/guards/admin.guard';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'students',
     component: StudentsComponent,
-    canActivate: [adminGuard],
+   /* canActivate: [adminGuard],*/
   },
   {
     path: 'courses',
@@ -25,6 +25,10 @@ const routes: Routes = [
   {
     path: 'courses/:title',
     component: DetailsComponent,
+  },
+  {
+    path: 'users',
+    component: UsersComponent
   },
   {
     path: '**',

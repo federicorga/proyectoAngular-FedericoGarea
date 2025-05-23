@@ -1,2 +1,5 @@
-<student-form></student-form>
+<ng-container *ngIf="(authUser$ | async)?.role === 'admin'">
+  <student-form></student-form>
+</ng-container>
+
 <student-table></student-table>

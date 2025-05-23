@@ -4,6 +4,8 @@ import { StudentsService } from '../../../../../core/services/students.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditStudentDialogComponent } from '../edit-student-dialog/edit-student-dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../../../../core/services/auth.service';
 
 @Component({
   selector: 'student-table',
@@ -15,12 +17,16 @@ export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'email', 'course', 'isActive', 'actions'];
   dataSource: Student[] = [];
   errorMessage: string | null = null; // Variable para almacenar errores
+  authUser: Observable<any>;
 
   constructor(
     private studentsService: StudentsService,
     @Inject('TITLE') private title: string,
-    private dialog: MatDialog
-  ) {}
+    private dialog: MatDialog,
+      private authService: AuthService 
+  ) {
+     this.authUser = this.authService.authUser$;
+  }
 
   ngOnInit(): void {
     this.studentsService.students$.subscribe({

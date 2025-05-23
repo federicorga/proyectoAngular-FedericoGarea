@@ -10,6 +10,7 @@ import { CoursesModule } from './courses/courses.module';
 import { StudentsModule } from './students/students.module';
 import { RobotComponent } from './robot/robot.component';
 
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [DashboardComponent, RobotComponent],
@@ -18,6 +19,7 @@ import { RobotComponent } from './robot/robot.component';
     SharedModule,
     CoursesModule,
     StudentsModule,
+    UsersModule,
     RouterModule,
     DashboardRoutingModule,
    

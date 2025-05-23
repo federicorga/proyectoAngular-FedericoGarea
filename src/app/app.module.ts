@@ -9,10 +9,10 @@ import { HomeComponent } from './featured/dashboard/home/home.component';
 import { DashboardModule } from './featured/dashboard/dashboard.module';
 import { AuthModule } from './featured/auth/auth.module';
 import {
-HttpClientModule,
 provideHttpClient,
 withFetch,
 } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -29,6 +29,3 @@ withFetch,
 export class AppModule {}
 
 
-//json-server ./db.json
-
-// si no se instala global npx json-server ./db.json

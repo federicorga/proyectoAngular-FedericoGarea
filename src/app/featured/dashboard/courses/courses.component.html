@@ -1,2 +1,4 @@
+<ng-container *ngIf="(authUser$ | async)?.role === 'admin'">
 <course-form></course-form>
+</ng-container>
 <course-table></course-table>
