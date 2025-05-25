@@ -1,8 +1,8 @@
 <!-- table.component.html -->
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <ng-container matColumnDef="fullName">
-    <th mat-header-cell *matHeaderCellDef>Nombre</th>
-    <td mat-cell *matCellDef="let user">{{ user.fullName }}</td>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let user">{{ user.id }}</td>
   </ng-container>
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef>Email</th>
@@ -12,15 +12,15 @@
     <th mat-header-cell *matHeaderCellDef>Rol</th>
     <td mat-cell *matCellDef="let user">{{ user.role }}</td>
   </ng-container>
-  <ng-container matColumnDef="isActive">
-    <th mat-header-cell *matHeaderCellDef>Activo</th>
-    <td mat-cell *matCellDef="let user">{{ user.isActive ? 'Sí' : 'No' }}</td>
-  </ng-container>
+ 
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Acciones</th>
     <td mat-cell *matCellDef="let user">
-      <button (click)="deleteUser(user.id)">Eliminar</button>
+      <ng-container *ngIf="(authUser | async)?.role === 'admin'">
+      <button mat-button (click)="deleteUser(user.id)"> <img class="trash-icon-table" src="/img/tacho-de-basura.png" width="30px" alt=""></button>
+    </ng-container>
     </td>
+    
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

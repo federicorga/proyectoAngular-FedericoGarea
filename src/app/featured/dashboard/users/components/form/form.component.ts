@@ -1,34 +1,50 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { UsersService } from '../../../../../core/services/user.service';
-import { User } from '../../../../auth/interfaces/User';
-
+import { DialogComponent } from '../../../../../shared/components/dialog/dialog.component';
 
 @Component({
   selector: 'user-form',
   templateUrl: './form.component.html',
+  standalone: false,
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent {
-  fullName = '';
-  email = '';
-  role: 'admin' | 'user' = 'user';
-  isActive = true;
+  formGroup: FormGroup;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private usersService: UsersService
+  ) {
+    this.formGroup = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
+      role: ['user', [Validators.required]]
+    });
+  }
 
-  submit() {
-    const newUser: User = {
-      id: Date.now(),
-      password: this.password,
-      email: this.email,
-      role: this.role,
-    ,
-    };
+  submit(): void {
+    if (this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
 
-    this.usersService.addUser(newUser);
+    this.dialog.open(DialogComponent).afterClosed().subscribe((confirmed) => {
+      if (confirmed) {
+        const newUser = {
+          id: Date.now().toString(), // Igual que los estudiantes
+          ...this.formGroup.value
+        };
 
-   this.role ='user';
-   this.password = '';
-    this.email = '';
+        this.usersService.addUser(newUser);
+
+        // Reset con valores por defecto
+        this.formGroup.reset({
+          role: 'user'
+        });
+      }
+    });
   }
 }

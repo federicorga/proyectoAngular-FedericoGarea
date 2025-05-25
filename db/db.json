@@ -7,22 +7,10 @@
       "role": "admin"
     },
     {
-      "id": "1e7b9c2e-3f4a-4b8a-9c3d-1a2b322326f",
-      "email": "prueba@gmail.com",
+      "id": "1748127793273",
+      "email": "fede@gmail.com",
       "password": "1234",
       "role": "admin"
-    },
-    {
-      "id": "2f8c0d3f-4e5b-6a7c-8d9e-0f1a2b3c4d5e",
-      "email": "sofi@gmail.com",
-      "password": "1234",
-      "role": "user"
-    },
-    {
-      "id": "3a9d1e4f-5b6c-7a8d-9e0f-1a2b3c4d5e6f",
-      "email": "aldo@gmail.com",
-      "password": "1234",
-      "role": "user"
     }
   ],
   "courses": [
@@ -63,7 +51,7 @@
       "firstName": "Jane",
       "lastName": "Smith",
       "email": "jane@gmail.com",
-      "course": "node js",
+      "course": "next js",
       "isActive": true
     },
     {

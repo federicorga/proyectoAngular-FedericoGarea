@@ -1,1 +1,5 @@
-<p>users works!</p>
+<ng-container *ngIf="(authUser$ | async)?.role === 'admin'">
+    <user-form></user-form>
+  </ng-container>
+  
+  <user-table></user-table>
