@@ -3,6 +3,9 @@ import { User } from '../../featured/auth/interfaces/User';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development'; // O ajusta la ruta
+import { RootState } from '../store';
+import { Store } from '@ngrx/store';
+import { setAuthUser,unsetAuthUser } from '../store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -14,9 +17,11 @@ export class AuthService {
   private TOKEN = 'my_secret_token';
   private apiUrl = `${environment.apiUrl}/users`; // <- importante
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private store: Store<RootState>) {
     this.checkLocalStorage();
   }
+
+
 
   private checkLocalStorage() {
     const token = localStorage.getItem('token');
@@ -46,6 +51,12 @@ export class AuthService {
             observer.complete();
             return;
           }
+
+          this.store.dispatch(
+      setAuthUser({
+        payload: user,
+      })
+    );
 
           this._authUser.next(user);
           localStorage.setItem('token', this.TOKEN); // Guarda el token al iniciar sesión
@@ -84,5 +95,6 @@ export class AuthService {
     localStorage.removeItem('token'); // Elimina el token al cerrar sesión
     localStorage.removeItem('user'); // Elimina el usuario del localStorage
     this._authUser.next(null);
+    this.store.dispatch(unsetAuthUser()); // Despacha la acción para limpiar el estado del usuario
   }
 }

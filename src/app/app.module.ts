@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,7 +12,10 @@ import {
 provideHttpClient,
 withFetch,
 } from '@angular/common/http';
-
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './core/store';
+import {StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {EffectsModule} from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -22,6 +25,13 @@ withFetch,
     SharedModule,
 DashboardModule,
     AuthModule,
+    StoreModule.forRoot(rootReducer,{}),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: !isDevMode, // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot([]), // Register effects here if you have any
+    
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

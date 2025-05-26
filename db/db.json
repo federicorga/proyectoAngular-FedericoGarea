@@ -11,6 +11,12 @@
       "email": "fede@gmail.com",
       "password": "1234",
       "role": "admin"
+    },
+    {
+      "id": "1748272681096",
+      "email": "sofi@gmail.com",
+      "password": "1234",
+      "role": "user"
     }
   ],
   "courses": [

@@ -1,4 +1,4 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer,on } from '@ngrx/store';
 import { setAuthUser, unsetAuthUser } from './auth.actions';
 
 export const authFeatureName = 'auth';
