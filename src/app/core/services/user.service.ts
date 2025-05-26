@@ -53,7 +53,6 @@ export class UsersService {
 
   // DELETE
   deleteUser(id: number | string): void {
-    console.log('Eliminando usuario con id:', id); // <-- DEBUG
     this.http.delete(`${this.apiUrl}/${id}`).subscribe({
       next: () => {
         this.fetchUsersFromApi();

@@ -31,7 +31,6 @@ export class FormComponent {
       .subscribe({
         next: (confirmed: boolean) => {
           if (confirmed) {
-            console.log(this.formGroup.value);
             this.courseService.addCourse(this.formGroup.value);
             this.formGroup.reset();
           }

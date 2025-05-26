@@ -24,7 +24,6 @@ export class FormComponent implements OnInit {
     private courseService: CourseService,
     @Inject(APP_CONFIG) private config: AppConfig
   ) {
-    console.log(config);
 
     // Asegúrate de que course es del tipo string
     this.formGroup = this.fb.group({
@@ -68,7 +67,6 @@ export class FormComponent implements OnInit {
       .subscribe({
         next: (confirmed: boolean) => {
           if (confirmed) {
-            console.log(this.formGroup.value);
             this.studentsService.addStudent(this.formGroup.value);
             this.formGroup.reset({
               note: 0,
