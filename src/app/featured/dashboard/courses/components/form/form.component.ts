@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../../../../../shared/components/dialog/dialog.component';
 import { CourseService } from '../../../../../core/services/course.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'course-form',
@@ -18,10 +19,10 @@ export class FormComponent {
     private fb: FormBuilder,
     private matDialog: MatDialog
   ) {
-    this.formGroup = this.fb.group({
-      title: [''],
-      description: [''],
-    });
+this.formGroup = this.fb.group({
+  title: ['', Validators.required],
+  description: ['', Validators.required],
+});
   }
 
   submit() {

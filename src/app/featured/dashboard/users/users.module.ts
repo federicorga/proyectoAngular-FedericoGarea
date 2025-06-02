@@ -11,9 +11,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditUserDialogComponent } from './components/edit-user-dialog/edit-user-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
-  declarations: [UsersComponent, FormComponent, TableComponent],
+  declarations: [UsersComponent, FormComponent, TableComponent, EditUserDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
+    MatDialogModule
   ],
   exports: [UsersComponent],
 })

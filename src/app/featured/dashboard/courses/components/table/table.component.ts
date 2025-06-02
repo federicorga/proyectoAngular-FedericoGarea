@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../../../../../core/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../students/components/confirm-dialog/confirm-dialog.component';
+import { EditCourseDialogComponent } from '../edit-course-dialog/edit-course-dialog.component';
 
 
 
@@ -54,13 +55,19 @@ export class TableComponent implements OnInit {
     });
   };
   
-  editCourse(course: Course): void {
-    const updatedDescription = prompt('Nueva descripción:', course.description);
-    if (updatedDescription !== null) {
-      // Actualiza el curso con la nueva descripción
-      this.courseService.updateCourse({ ...course, description: updatedDescription });
-    }
+   editCourse(course: Course): void {
+    const dialogRef = this.dialog.open(EditCourseDialogComponent, {
+      width: '400px',
+      data: { ...course }
+    });
+
+    dialogRef.afterClosed().subscribe((result: Course | undefined) => {
+      if (result) {
+        this.courseService.updateCourse(result);
+      }
+    });
   }
+
 }
 
 

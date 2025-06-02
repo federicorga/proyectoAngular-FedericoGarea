@@ -6,6 +6,9 @@ import { FormComponent } from './components/form/form.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { CoursesComponent } from './courses.component';
 import { DetailsComponent } from './pages/details/details.component';
+import { EditCourseDialogComponent } from './components/edit-course-dialog/edit-course-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -13,8 +16,10 @@ import { DetailsComponent } from './pages/details/details.component';
     TableComponent,
     CoursesComponent,
     DetailsComponent,
+    EditCourseDialogComponent,
+
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, SharedModule,MatDialogModule],
   exports: [CoursesComponent],
 })
 export class CoursesModule {}

@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Editar Rol</h2>
+<mat-dialog-content>
+  <p><strong>Email:</strong> {{ data.email }}</p>
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Rol</mat-label>
+    <mat-select [(ngModel)]="data.role">
+      <mat-option *ngFor="let role of roles" [value]="role">{{ role }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()">Guardar</button>
+</mat-dialog-actions>

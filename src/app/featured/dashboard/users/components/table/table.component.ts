@@ -6,7 +6,9 @@ import { User } from '../../../../auth/interfaces/User';
 import { UsersService } from '../../../../../core/services/user.service';
 import { AuthService } from '../../../../../core/services/auth.service';
 import { Observable } from 'rxjs';
-
+import { EditUserDialogComponent } from '../edit-user-dialog/edit-user-dialog.component';
+import { ConfirmDialogComponent } from '../../../students/components/confirm-dialog/confirm-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'user-table',
   templateUrl: './table.component.html',
@@ -19,7 +21,7 @@ export class TableComponent implements OnInit {
    authUser: Observable<any>;
    
 
-  constructor(private usersService: UsersService,  private authService: AuthService ) {
+  constructor(private usersService: UsersService,  private authService: AuthService, private dialog: MatDialog ) {
     this.authUser = this.authService.authUser$;
   }
 
@@ -29,7 +31,35 @@ export class TableComponent implements OnInit {
   }
   
 
-  deleteUser(id: string) {
-    this.usersService.deleteUser(id);
+ deleteUser(id: string): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '300px',
+      data: { message: `¿Estás seguro de que querés eliminar el usuario "${id}"?` }
+    });
+
+    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+      if (confirmed) {
+        this.usersService.deleteUser(id);
+      }
+    });
   }
+
+editUser(user: User) {
+  const dialogRef = this.dialog.open(EditUserDialogComponent, {
+    width: '300px',
+    data: { ...user } // se pasa una copia
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) {
+      this.usersService.editUser(result);
+    }
+  });
 }
+
+  
+
+
+  
+}
+

@@ -1,5 +1,6 @@
 <form [formGroup]="formGroup" (ngSubmit)="submit()">
-  <mat-form-field appearance="fill">
+  <div>
+  <mat-form-field >
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" />
     <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
@@ -10,7 +11,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field >
     <mat-label>Contraseña</mat-label>
     <input matInput formControlName="password" type="password" />
     <mat-error *ngIf="formGroup.get('password')?.hasError('required')">
@@ -21,7 +22,7 @@
     </mat-error>
   </mat-form-field>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field >
     <mat-label>Rol</mat-label>
     <mat-select formControlName="role">
       <mat-option value="admin">Admin</mat-option>
@@ -32,5 +33,6 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Agregar Usuario</button>
+  <button mat-flat-button color="primary" type="submit" [disabled]="formGroup.invalid">Add User</button>
+  </div>
 </form>
