@@ -23,10 +23,10 @@ export class EditStudentDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: Student
   ) {
     this.studentData = { ...data };
-      // Pedimos los títulos de los cursos
+ 
   this.courseService.getCoursesTitles();
 
-  // Nos suscribimos y los guardamos en courseNames
+
   this.courseService.coursesTitles$
     .subscribe((courses) => {
       this.courseNames = courses.map((c) => c.toUpperCase()).sort((a, b) => a.localeCompare(b));

@@ -7,18 +7,11 @@ import { APP_CONFIG, AppConfig } from '../../core/injection-token';
 })
 
 export class StudentsMockService {
-  public students:Student[] =[]; //array de estudiantes que almacena los estudiantes del form
+  public students:Student[] =[]; 
   constructor(@Inject(APP_CONFIG) private config: AppConfig) {
-    console.log(config);
+
   }
 
-  addStudent(student: Student) {
-    console.log('Student added:', student);
-  }
-
-  getStudents(): void {
-    console.log('Fetching students...');
-  }
 
 
 }

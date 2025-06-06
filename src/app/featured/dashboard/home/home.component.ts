@@ -15,18 +15,18 @@ export class HomeComponent {
     const dia = new Date().getDay();
 
     if (dia === 0) {
-      this.color = '#FF0000'; // Domingo
+      this.color = '#FF0000'; 
     } else if (dia > 0 && dia < 15) {
-      this.color = '#00FF00'; // Lunes a Jueves
+      this.color = '#00FF00'; 
     } else if (dia >= 15 && dia < 30) {
-      this.color = '#0000FF'; // Viernes a Domingo
+      this.color = '#0000FF'; 
     } else if (dia === 30) {
-      this.color = '#FFFF00'; // 30
+      this.color = '#FFFF00';
     }
   }
 
   ngOnInit(): void {
-    // Obtienes el nombre del usuario al cargar el componente
+
     this.userName = this.authService.getUserName();
     
   }

@@ -13,7 +13,7 @@ export class StudentsEffects {
 
       ofType(StudentsActions.loadStudentss),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
+
         EMPTY.pipe(
           map(data => StudentsActions.loadStudentssSuccess({ data })),
           catchError(error => of(StudentsActions.loadStudentssFailure({ error }))))

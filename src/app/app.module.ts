@@ -28,10 +28,10 @@ DashboardModule,
     AuthModule,
     StoreModule.forRoot(rootReducer,{}),
     StoreDevtoolsModule.instrument({
-      maxAge: 25, // Retains last 25 states
-      logOnly: !isDevMode, // Restrict extension to log-only mode
+      maxAge: 25,
+      logOnly: !isDevMode, 
     }),
-    EffectsModule.forRoot([]), // Register effects here if you have any
+    EffectsModule.forRoot([]), 
     
   ],
   providers: [provideHttpClient(withFetch())],

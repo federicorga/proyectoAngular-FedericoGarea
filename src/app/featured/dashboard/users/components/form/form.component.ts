@@ -34,13 +34,13 @@ export class FormComponent {
     this.dialog.open(DialogComponent).afterClosed().subscribe((confirmed) => {
       if (confirmed) {
         const newUser = {
-          id: Date.now().toString(), // Igual que los estudiantes
+          id: Date.now().toString(), 
           ...this.formGroup.value
         };
 
         this.usersService.addUser(newUser);
 
-        // Reset con valores por defecto
+    
         this.formGroup.reset({
           role: 'user'
         });

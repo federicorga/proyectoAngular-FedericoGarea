@@ -1,4 +1,4 @@
-// users/components/table/table.component.ts
+
 import { Component, OnInit } from '@angular/core';
 
 
@@ -26,7 +26,7 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usersService.fetchUsersFromApi(); // <- necesario
+    this.usersService.fetchUsersFromApi(); 
     this.usersService.users$.subscribe(data => this.dataSource = data);
   }
   
@@ -47,7 +47,7 @@ export class TableComponent implements OnInit {
 editUser(user: User) {
   const dialogRef = this.dialog.open(EditUserDialogComponent, {
     width: '300px',
-    data: { ...user } // se pasa una copia
+    data: { ...user } 
   });
 
   dialogRef.afterClosed().subscribe(result => {

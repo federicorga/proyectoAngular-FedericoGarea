@@ -6,13 +6,13 @@ import { UsersActions } from './users.actions';
 export const usersesFeatureKey = 'userses';
 
 export interface State extends EntityState<User> {
-  // additional entities state properties
+
 }
 
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
 export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
+
 });
 
 export const reducer = createReducer(

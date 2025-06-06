@@ -11,11 +11,11 @@ export class StudentsService {
   private dataSubject = new BehaviorSubject<Student[]>([]);
   students$ = this.dataSubject.asObservable();
 
-  private apiUrl = `${environment.apiUrl}/students`; // URL del endpoint
+  private apiUrl = `${environment.apiUrl}/students`; 
 
   constructor(private http: HttpClient) {}
 
-  // GET desde API
+
   fetchStudentsFromApi(): void {
     this.http.get<Student[]>(this.apiUrl).subscribe({
       next: (students) => {
@@ -27,11 +27,11 @@ export class StudentsService {
     });
   }
 
-  // POST
+
   addStudent(student: Student): void {
     this.http.post<Student>(this.apiUrl, student).subscribe({
       next: (newStudent) => {
-        this.fetchStudentsFromApi(); // Refrescamos la lista
+        this.fetchStudentsFromApi(); 
       },
       error: (error) => {
         console.error('Error adding student:', error);
@@ -39,11 +39,11 @@ export class StudentsService {
     });
   }
 
-  // PUT
+
   editStudent(student: Student): void {
     this.http.put(`${this.apiUrl}/${student.id}`, student).subscribe({
       next: () => {
-        this.fetchStudentsFromApi(); // Refrescamos la lista
+        this.fetchStudentsFromApi(); 
       },
       error: (error) => {
         console.error('Error updating student:', error);
@@ -51,11 +51,11 @@ export class StudentsService {
     });
   }
 
-  // DELETE
+
   deleteStudent(id: number | string): void {
     this.http.delete(`${this.apiUrl}/${id}`).subscribe({
       next: () => {
-        this.fetchStudentsFromApi(); // Refrescamos la lista
+        this.fetchStudentsFromApi(); 
       },
       error: (error) => {
         console.error('Error deleting student:', error);
@@ -63,7 +63,7 @@ export class StudentsService {
     });
   }
 
-  // Utilidad para obtener estudiantes una sola vez (Promise)
+ 
   getStudentsPromise(): Promise<Student[]> {
     return new Promise((resolve, reject) => {
       this.http.get<Student[]>(this.apiUrl).subscribe({

@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '', // Redirige a la página de inicio si la ruta no coincide con ninguna de las anteriores
+    redirectTo: '',
   },
 ];
 

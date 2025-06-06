@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
     this.courseService.getCourses();
     this.courseService.courses$.subscribe({
       next: (data) => {
-        console.log(data);
+   
         this.dataSource = data;
       },
       error: (error) => {

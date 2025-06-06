@@ -16,7 +16,7 @@ import { AuthService } from '../../../../../core/services/auth.service';
 export class TableComponent implements OnInit {
   displayedColumns: string[] = ['id', 'fullName', 'email', 'course', 'isActive', 'actions'];
   dataSource: Student[] = [];
-  errorMessage: string | null = null; // Variable para almacenar errores
+  errorMessage: string | null = null; 
   authUser: Observable<any>;
 
   constructor(

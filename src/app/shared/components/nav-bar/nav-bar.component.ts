@@ -28,7 +28,7 @@ export class NavBarComponent {
   }
 
   ngOnInit(): void {
-    // Obtienes el nombre del usuario al cargar el componente
+
     this.userName = this.authService.getUserName();
   }
 }

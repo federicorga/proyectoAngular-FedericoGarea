@@ -15,7 +15,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  // GET
+
   fetchUsersFromApi(): void {
     this.http.get<User[]>(this.apiUrl).subscribe({
       next: (users) => {
@@ -27,7 +27,7 @@ export class UsersService {
     });
   }
 
-  // POST
+
   addUser(user: User): void {
     this.http.post<User>(this.apiUrl, user).subscribe({
       next: () => {
@@ -39,7 +39,7 @@ export class UsersService {
     });
   }
 
-  // PUT
+
   editUser(user: User): void {
     this.http.put(`${this.apiUrl}/${user.id}`, user).subscribe({
       next: () => {
@@ -51,7 +51,6 @@ export class UsersService {
     });
   }
 
-  // DELETE
   deleteUser(id: number | string): void {
     this.http.delete(`${this.apiUrl}/${id}`).subscribe({
       next: () => {
@@ -63,7 +62,7 @@ export class UsersService {
     });
   }
 
-  // Promise utility
+
   getUsersPromise(): Promise<User[]> {
     return new Promise((resolve, reject) => {
       this.http.get<User[]>(this.apiUrl).subscribe({

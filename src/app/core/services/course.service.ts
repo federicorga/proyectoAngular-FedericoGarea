@@ -20,7 +20,7 @@ export class CourseService {
 
   constructor(private http: HttpClient) {}
 
-  // Fuente de datos
+
   private _courses: Course[] = [];
 
   setUpdateCourse(id: string) {

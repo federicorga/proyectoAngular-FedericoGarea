@@ -19,7 +19,7 @@ const routes: Routes = [
     canActivate: [authGuard],
   },
   {
-    path: '**', // Si la ruta no coincide con ninguna de las anteriores, redirige a la página de inicio
+    path: '**', 
     redirectTo: 'auth',
   },
 ];

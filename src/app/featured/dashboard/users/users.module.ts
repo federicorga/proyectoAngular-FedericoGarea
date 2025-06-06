@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
-// Si usas inputs, selects o cualquier otro componente Angular Material:
+
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';

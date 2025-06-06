@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../../featured/auth/interfaces/User';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development'; // O ajusta la ruta
+import { environment } from '../../../environments/environment.development'; 
 import { RootState } from '../store';
 import { Store } from '@ngrx/store';
 import { setAuthUser,unsetAuthUser } from '../store/auth/auth.actions';
@@ -15,7 +15,7 @@ export class AuthService {
   authUser$ = this._authUser.asObservable();
 
   private TOKEN = 'my_secret_token';
-  private apiUrl = `${environment.apiUrl}/users`; // <- importante
+  private apiUrl = `${environment.apiUrl}/users`; 
 
   constructor(private http: HttpClient, private store: Store<RootState>) {
     this.checkLocalStorage();
@@ -26,7 +26,7 @@ export class AuthService {
   private checkLocalStorage() {
     const token = localStorage.getItem('token');
     if (token === this.TOKEN) {
-      // Si el token es válido, cargamos el usuario
+
       this.loadUserFromLocalStorage();
     }
   }
@@ -59,8 +59,8 @@ export class AuthService {
     );
 
           this._authUser.next(user);
-          localStorage.setItem('token', this.TOKEN); // Guarda el token al iniciar sesión
-          localStorage.setItem('user', JSON.stringify(user)); // Guarda el usuario en el localStorage
+          localStorage.setItem('token', this.TOKEN); 
+          localStorage.setItem('user', JSON.stringify(user)); 
           observer.next(true);
           observer.complete();
         },
@@ -88,13 +88,13 @@ export class AuthService {
 
   verifyToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    return of(token === this.TOKEN);  // Verifica si el token en localStorage es válido
+    return of(token === this.TOKEN);   
   }
 
   logout() {
-    localStorage.removeItem('token'); // Elimina el token al cerrar sesión
-    localStorage.removeItem('user'); // Elimina el usuario del localStorage
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
     this._authUser.next(null);
-    this.store.dispatch(unsetAuthUser()); // Despacha la acción para limpiar el estado del usuario
+    this.store.dispatch(unsetAuthUser()); 
   }
 }

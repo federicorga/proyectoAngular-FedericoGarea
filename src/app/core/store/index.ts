@@ -7,7 +7,7 @@ export interface RootState {
   [authFeatureName]: AuthState;
 }
 
-export const rootReducer: ActionReducerMap<RootState> = { //Se declara aqui adentro cada reducer
+export const rootReducer: ActionReducerMap<RootState> = { 
 
   [authFeatureName]: authReducer,
 };

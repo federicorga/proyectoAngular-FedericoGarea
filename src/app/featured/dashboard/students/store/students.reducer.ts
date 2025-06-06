@@ -6,13 +6,13 @@ import { StudentsActions } from './students.actions';
 export const studentsesFeatureKey = 'studentses';
 
 export interface State extends EntityState<Student> {
-  // additional entities state properties
+
 }
 
 export const adapter: EntityAdapter<Student> = createEntityAdapter<Student>();
 
 export const initialState: State = adapter.getInitialState({
-  // additional entity state properties
+
 });
 
 export const reducer = createReducer(

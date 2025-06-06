@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   selector: 'app-users',
   standalone: false,
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']  // CORRECTO
+  styleUrls: ['./users.component.scss']  
 })
 
 

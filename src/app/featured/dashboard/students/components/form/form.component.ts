@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
     @Inject(APP_CONFIG) private config: AppConfig
   ) {
 
-    // Asegúrate de que course es del tipo string
+
     this.formGroup = this.fb.group({
       firstName: ['', [Validators.minLength(3), Validators.required]],
       lastName: ['', [Validators.minLength(3), Validators.required]],
@@ -33,13 +33,13 @@ export class FormComponent implements OnInit {
       note: [0, [Validators.maxLength(2)]],
       isActive: ['inactivo', [Validators.required]],
       picture: ['https://www.w3schools.com/bootstrap4/img_avatar1.png'],
-      course: ['', [Validators.required]], // Asegúrate de que esté correctamente definido
+      course: ['', [Validators.required]], 
     });
   }
 
   
   ngOnInit(): void {
-    // Obtener cursos al iniciar
+
     this.courseService.getCourses();
     this.courseService.coursesTitles$
       .pipe(
@@ -49,7 +49,7 @@ export class FormComponent implements OnInit {
             .map((title) => title.toUpperCase())
             .sort((a, b) => a.localeCompare(b))
         ),
-        tap((titles) => console.log('Cursos disponibles:', titles))
+
       )
       .subscribe((titles) => {
         this.courseNames = titles;
